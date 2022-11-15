@@ -40,4 +40,14 @@ public class dominoController {
     return "game.html";
   }
 
+  @GetMapping("/dominoSet")
+  public String dominoSet() {
+    return "game.html";
+  }
+
+  @GetMapping("/dominoKnock")
+  public String dominoKnock() {
+    return "game.html";
+  }
+
 }
