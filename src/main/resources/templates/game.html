@@ -1,1 +1,29 @@
-Gameだよ
+<!DOCTYPE html>
+<html>
+
+<body>
+  <div th:if="${room}">
+    <p>No.[[${room.roomid}]]</p>
+  </div>
+
+  <div th:if="${user}">
+    あなたのID:[[${user.id}]]
+    <div th:if="{count}">
+      部屋の人数:[[${count}]]
+    </div>
+    <div th:if="${room}">
+      ドミノの数:[[${room.dominos}]]
+    </div>
+  </div>
+
+  <a href="/dominoSet">ドミノを設置</a><br>
+  <a href="/dominoKnock">ドミノを倒す</a><br>
+
+  <br>
+  <div th:if="${id}">
+    [[${id}]]がドミノを置いた
+  </div>
+
+</body>
+
+</html>
