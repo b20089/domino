@@ -15,4 +15,19 @@ public class dominoController {
     return "domino.html";
   }
 
+  @GetMapping("/no1")
+  public String no1() {
+    return "game.html";
+  }
+
+  @GetMapping("/no2")
+  public String no2() {
+    return "game.html";
+  }
+
+  @GetMapping("/no3")
+  public String no3() {
+    return "game.html";
+  }
+
 }
