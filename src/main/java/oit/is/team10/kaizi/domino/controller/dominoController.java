@@ -27,6 +27,7 @@ public class dominoController {
 
   @GetMapping("/no1")
   public String no1() {
+    
     return "game.html";
   }
 
