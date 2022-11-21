@@ -3,6 +3,7 @@ package oit.is.team10.kaizi.domino.model;
 public class User {
   int id;
   int roomid;
+  String userName;
 
   public int getId() {
     return id;
@@ -10,6 +11,14 @@ public class User {
 
   public void setId(int id) {
     this.id = id;
+  }
+
+  public String getName() {
+    return userName;
+  }
+
+  public void setName(String name) {
+    this.userName = name;
   }
 
   public int getRoomid() {
