@@ -3,12 +3,12 @@
 
 <body>
   <div th:if="${room}">
-    <p>No.[[${room.roomid}]]</p>
+    <p>No.[[${room.id}]]</p>
   </div>
 
   <div th:if="${user}">
     あなたのID:[[${user.id}]]
-    <div th:if="{count}">
+    <div th:if="${count}">
       部屋の人数:[[${count}]]
     </div>
     <div th:if="${room}">

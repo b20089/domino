@@ -1,6 +1,6 @@
 package oit.is.team10.kaizi.domino.model;
 
-public class User {
+public class Users {
   int id;
   int roomid;
   String userName;
