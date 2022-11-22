@@ -6,5 +6,5 @@ CREATE TABLE room (
 );
 CREATE TABLE users (
   id IDENTITY PRIMARY KEY,
-  roomId INT NOT NULL
+  roomId INT
 );

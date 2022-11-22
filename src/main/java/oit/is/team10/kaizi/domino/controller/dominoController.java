@@ -8,8 +8,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import oit.is.team10.kaizi.domino.model.Room;
 import oit.is.team10.kaizi.domino.model.RoomMapper;
-import oit.is.team10.kaizi.domino.model.UserMapper;
+import oit.is.team10.kaizi.domino.model.Users;
+import oit.is.team10.kaizi.domino.model.UsersMapper;
 
 @Controller
 public class dominoController {
@@ -18,16 +20,27 @@ public class dominoController {
   RoomMapper roomMapper;
 
   @Autowired
-  UserMapper userMapper;
+  UsersMapper userMapper;
 
   @GetMapping("/domino")
-  public String sample21() {
+  public String sample21(ModelMap model) {
+    Users user = new Users();
+    userMapper.insertUser(user);
+    model.addAttribute("user1", user);
     return "domino.html";
   }
 
   @GetMapping("/no1")
-  public String no1() {
-    
+  public String no1(@RequestParam Integer id, @RequestParam Integer roomid, ModelMap model) {
+    Room room = new Room();
+    Users user = new Users();
+    user = userMapper.selectById(id);
+    room = roomMapper.selectById(roomid);
+    int count = userMapper.countusers(user);
+    userMapper.updateById(room, user);
+    model.addAttribute("user", user);
+    model.addAttribute("room", room);
+    model.addAttribute("count", count);
     return "game.html";
   }
 
