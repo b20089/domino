@@ -16,12 +16,16 @@
     </div>
   </div>
 
-  <a href="/dominoSet">ドミノを設置</a><br>
-  <a href="/dominoKnock">ドミノを倒す</a><br>
+  <a th:href="@{/dominoSet(id=${room.id}, userid=${user.id})}">ドミノを設置</a><br>
+  <a th:href="@{/dominoKnock(id=${room.id}, userid=${user.id})}">ドミノを倒す</a><br>
 
   <br>
-  <div th:if="${id}">
-    [[${id}]]がドミノを置いた
+  <div th:if="${player}">
+    <div th:each="play:${player}">
+      <tr>
+        <td>[[${play.id}]]がドミノを置いた</td>
+      </tr>
+    </div>
   </div>
 
 </body>
