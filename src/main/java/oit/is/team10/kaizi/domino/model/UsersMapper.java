@@ -25,5 +25,5 @@ public interface UsersMapper {
   void updateById(Room room, Users user);
 
   @Select("SELECT COUNT (*) FROM USERS")
-  Integer countusers(Users user);
+  Integer countUsers(Users user);
 }

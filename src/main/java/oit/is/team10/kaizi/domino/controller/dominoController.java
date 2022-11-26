@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.User;
 
 import oit.is.team10.kaizi.domino.model.Room;
 import oit.is.team10.kaizi.domino.model.RoomMapper;
@@ -36,7 +37,7 @@ public class dominoController {
     Users user = new Users();
     user = userMapper.selectById(id);
     room = roomMapper.selectById(roomid);
-    int count = userMapper.countusers(user);
+    int count = userMapper.countUsers(user);
     userMapper.updateById(room, user);
     model.addAttribute("user", user);
     model.addAttribute("room", room);
@@ -55,12 +56,36 @@ public class dominoController {
   }
 
   @GetMapping("/dominoSet")
-  public String dominoSet() {
+  public String dominoSet(@RequestParam Integer id, @RequestParam Integer userid, ModelMap model) {
+    int dominos = roomMapper.selectDominoById(id);
+    dominos++;
+    roomMapper.updateByDominos(dominos, id);
+    Room room = new Room();
+    room = roomMapper.selectById(id);
+    Users user = new Users();
+    user = userMapper.selectById(userid);
+    int count = userMapper.countUsers(user);
+    Users player = new Users();
+    player = userMapper.selectById(userid);
+    model.addAttribute("room", room);
+    model.addAttribute("user", user);
+    model.addAttribute("count", count);
+    model.addAttribute("player", player);
     return "game.html";
   }
 
   @GetMapping("/dominoKnock")
-  public String dominoKnock() {
+  public String dominoKnock(@RequestParam Integer id, @RequestParam Integer userid, ModelMap model) {
+    int dominos = 0;
+    roomMapper.updateByDominos(dominos, id);
+    Room room = new Room();
+    room = roomMapper.selectById(id);
+    Users user = new Users();
+    user = userMapper.selectById(userid);
+    int count = userMapper.countUsers(user);
+    model.addAttribute("room", room);
+    model.addAttribute("user", user);
+    model.addAttribute("count", count);
     return "game.html";
   }
 
