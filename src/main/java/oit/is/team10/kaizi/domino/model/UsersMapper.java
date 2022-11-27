@@ -24,6 +24,9 @@ public interface UsersMapper {
   @Update("UPDATE USERS SET ROOMID=#{room.id} WHERE ID=#{user.id}")
   void updateById(Room room, Users user);
 
+  @Update("UPDATE USERS SET ROOMID=#{zero} WHERE ID=#{user.id}")
+  void updateZeroById(Users user, int zero);
+
   @Select("SELECT COUNT (*) FROM USERS")
   Integer countUsers(Users user);
 }

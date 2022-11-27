@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.apache.ibatis.jdbc.Null;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;
 
@@ -87,6 +88,18 @@ public class dominoController {
     model.addAttribute("user", user);
     model.addAttribute("count", count);
     return "game.html";
+  }
+
+  @GetMapping("/back")
+  public String back(@RequestParam Integer userid, ModelMap model) {
+    Users user1 = new Users();
+
+    user1 = userMapper.selectById(userid);
+    userMapper.updateZeroById(user1, 0);
+
+    model.addAttribute("user1", user1);
+
+    return "domino.html";
   }
 
 }

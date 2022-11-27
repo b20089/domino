@@ -2,6 +2,9 @@
 <html>
 
 <body>
+
+  <a th:href="@{/back(userid=${user.id})}">もどる</a><br>
+
   <div th:if="${room}">
     <p>No.[[${room.id}]]</p>
   </div>
