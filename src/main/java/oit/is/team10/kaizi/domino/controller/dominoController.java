@@ -38,10 +38,11 @@ public class dominoController {
     Users user = new Users();
     user = userMapper.selectById(id);
     room = roomMapper.selectById(roomid);
-    int count = userMapper.countUsers(user);
+
     userMapper.updateById(room, user);
     model.addAttribute("user", user);
     model.addAttribute("room", room);
+    int count = userMapper.countUsers(user, roomid);
     model.addAttribute("count", count);
     return "game.html";
   }
@@ -65,7 +66,7 @@ public class dominoController {
     room = roomMapper.selectById(id);
     Users user = new Users();
     user = userMapper.selectById(userid);
-    int count = userMapper.countUsers(user);
+    int count = userMapper.countUsers(user, id);
     Users player = new Users();
     player = userMapper.selectById(userid);
     model.addAttribute("room", room);
@@ -83,7 +84,7 @@ public class dominoController {
     room = roomMapper.selectById(id);
     Users user = new Users();
     user = userMapper.selectById(userid);
-    int count = userMapper.countUsers(user);
+    int count = userMapper.countUsers(user, id);
     model.addAttribute("room", room);
     model.addAttribute("user", user);
     model.addAttribute("count", count);

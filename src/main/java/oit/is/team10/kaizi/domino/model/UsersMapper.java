@@ -14,7 +14,7 @@ public interface UsersMapper {
   @Select("SELECT * from Users where id = #{id}")
   Users selectById(int id);
 
-  @Insert("INSERT INTO Users () VALUES ();")
+  @Insert("INSERT INTO Users (ROOMID) VALUES (0);")
   @Options(useGeneratedKeys = true, keyColumn = "id", keyProperty = "id")
   void insertUser(Users user);
 
@@ -27,6 +27,6 @@ public interface UsersMapper {
   @Update("UPDATE USERS SET ROOMID=#{zero} WHERE ID=#{user.id}")
   void updateZeroById(Users user, int zero);
 
-  @Select("SELECT COUNT (*) FROM USERS")
-  Integer countUsers(Users user);
+  @Select("SELECT COUNT (*) FROM USERS WHERE ROOMID=#{id}")
+  Integer countUsers(Users user, int id);
 }
