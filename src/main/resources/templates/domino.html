@@ -12,9 +12,9 @@
     <p>DominoGame!!</p>
     <div th:if="${user1}">
       <h2>RooM</h2>
-      <a th:href="@{/no1(roomid=1, id=${user1.id})}">No.1</a><br>
-      <a href="/no2">No.2</a><br>
-      <a href="/no3">No.3</a><br>
+      <a th:href="@{/room(roomid=1, id=${user1.id})}">No.1</a><br>
+      <a th:href="@{/room(roomid=2, id=${user1.id})}">No.2</a><br>
+      <a th:href="@{/room(roomid=3, id=${user1.id})}">No.3</a><br>
     </div>
 </body>
 
