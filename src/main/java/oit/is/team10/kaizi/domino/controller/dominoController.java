@@ -60,7 +60,7 @@ public class dominoController {
   private final Logger logger = LoggerFactory.getLogger(dominoController.class);
 
   @GetMapping("/intoRoom")
-  public SseEmitter pushCount() {
+  public SseEmitter pushCount(@RequestParam int test) {
     // infoレベルでログを出力する
     logger.info("pushCount");
 
@@ -69,7 +69,7 @@ public class dominoController {
     // 引数にLongの最大値をTimeoutとして指定する
 
     try {
-      this.ac56.count(emitter, 1);
+      this.ac56.count(emitter, test);
     } catch (IOException e) {
       // 例外の名前とメッセージだけ表示する
       logger.warn("Exception:" + e.getClass().getName() + ":" + e.getMessage());

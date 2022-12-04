@@ -8,11 +8,12 @@
         alert(alertStr2);
       }
     window.onload = function () {
-      var sse = new EventSource('/intoRoom');
-      sse.onmessage(function (event) {
+      var sse = new EventSource('/intoRoom?test=' + alertStr2);
+
+      sse.onmessage = function (event) {
         console.log(event.data);
         document.getElementById("a").textContent = event.data;
-      });
+      }
     }
   </script>
 </head>
@@ -24,7 +25,7 @@
   <div th:if="${room}">
     <p>No.[[${room.id}]]</p>
   </div>
-  <input type="button" value="テスト１" onclick="test1();" />
+  <input type="button" value="RoomNo," onclick="test1();" />
   <div th:if="${user}">
     あなたのID:[[${user.id}]]
     <div th:if="${count}">
