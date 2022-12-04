@@ -25,7 +25,6 @@ import oit.is.team10.kaizi.domino.service.AsyncDomino;
 
 @Controller
 public class dominoController {
-
   @Autowired
   RoomMapper roomMapper;
 
@@ -54,6 +53,7 @@ public class dominoController {
     model.addAttribute("room", room);
     int count = userMapper.countUsers(user, roomid);
     model.addAttribute("count", count);
+    model.addAttribute("alertString2", id);
     return "game.html";
   }
 
@@ -69,7 +69,7 @@ public class dominoController {
     // 引数にLongの最大値をTimeoutとして指定する
 
     try {
-      this.ac56.count(emitter);
+      this.ac56.count(emitter, 1);
     } catch (IOException e) {
       // 例外の名前とメッセージだけ表示する
       logger.warn("Exception:" + e.getClass().getName() + ":" + e.getMessage());
@@ -94,6 +94,8 @@ public class dominoController {
     model.addAttribute("user", user);
     model.addAttribute("count", count);
     model.addAttribute("player", player);
+    model.addAttribute("alertString2", id);
+
     return "game.html";
   }
 
@@ -109,6 +111,8 @@ public class dominoController {
     model.addAttribute("room", room);
     model.addAttribute("user", user);
     model.addAttribute("count", count);
+    model.addAttribute("alertString2", id);
+
     return "game.html";
   }
 
