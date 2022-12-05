@@ -2,13 +2,17 @@
 <html>
 
 <head>
-  <script>
+  <script th:inline="javascript">
+    var alertStr2 = /*[[${alertString2}]]*/
+      function test1() {
+        alert(alertStr2);
+      }
     window.onload = function () {
+      var sse = new EventSource('/intoRoom?test=' + alertStr2);
 
-      var sse = new EventSource('/intoRoom');
       sse.onmessage = function (event) {
         console.log(event.data);
-        document.getElementById("p1").textContent = event.data;
+        document.getElementById("a").textContent = event.data;
       }
     }
   </script>
@@ -16,21 +20,19 @@
 
 <body>
 
-  <p id="p1"></p>
-
   <a th:href="@{/back(userid=${user.id})}">もどる</a><br>
 
   <div th:if="${room}">
     <p>No.[[${room.id}]]</p>
   </div>
-
+  <input type="button" value="RoomNo," onclick="test1();" />
   <div th:if="${user}">
     あなたのID:[[${user.id}]]
     <div th:if="${count}">
       部屋の人数:[[${count}]]
     </div>
     <div th:if="${room}">
-      ドミノの数:[[${room.dominos}]]
+      ドミノの数:<a id="a"></a>
     </div>
   </div>
 
