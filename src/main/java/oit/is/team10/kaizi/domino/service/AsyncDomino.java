@@ -22,22 +22,22 @@ public class AsyncDomino {
 
   @Autowired
   RoomMapper roomMapper;
-  Room room;
 
   @Async
-  public void count(SseEmitter emitter, int id) throws IOException {
+  public void count(SseEmitter emitter) throws IOException {
     logger.info("AsyncDomino.count");
-    room = new Room();
-    room = roomMapper.selectById(id);
+    Room room[] = new Room[3];
+    room[0] = roomMapper.selectById(1);
+    room[1] = roomMapper.selectById(2);
+    room[2] = roomMapper.selectById(3);
     try {
       while (true) {
         logger.info("send" + counter);
         // CUSTOMERとSELLERでカウンタを分ける
         // この2つ以外のロール場合は常にcounter=0
 
-        counter = room.getDominos();
         // ロールごとのカウンタとロール名を送る
-        emitter.send(counter);
+        emitter.send(room);
         TimeUnit.SECONDS.sleep(1);
       }
     } catch (InterruptedException e) {

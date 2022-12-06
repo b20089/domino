@@ -3,16 +3,20 @@
 
 <head>
   <script th:inline="javascript">
-    var alertStr2 = /*[[${alertString2}]]*/
+    var alertStr2 = /*[[${room}]]*/
       function test1() {
-        alert(alertStr2);
+        alert(alertStr2.id);
+      }
+    var alertStr3 = /*[[${roomid}]]*/
+      function test2() {
+        alert(alertStr3);
       }
     window.onload = function () {
-      var sse = new EventSource('/intoRoom?test=' + alertStr2);
-
-      sse.onmessage = function (event) {
+      var sse1 = new EventSource('/intoRoom?test=' + alertStr3);
+      sse1.onmessage = function (event) {
         console.log(event.data);
-        document.getElementById("a").textContent = event.data;
+        var room = event.data[0];
+        document.getElementById("a").textContent = room;
       }
     }
   </script>
@@ -23,9 +27,11 @@
   <a th:href="@{/back(userid=${user.id})}">もどる</a><br>
 
   <div th:if="${room}">
-    <p>No.[[${room.id}]]</p>
+    <p>No.[[${room.id}]]</a></p>
   </div>
-  <input type="button" value="RoomNo," onclick="test1();" />
+  <input type="button" value="Room.id," onclick="test1();" />
+  <input type="button" value="RoomNo2," onclick="test2();" />
+
   <div th:if="${user}">
     あなたのID:[[${user.id}]]
     <div th:if="${count}">
@@ -33,6 +39,8 @@
     </div>
     <div th:if="${room}">
       ドミノの数:<a id="a"></a>
+      ドミノの数:<a id="b"></a>
+      ドミノの数:<a id="c"></a>
     </div>
   </div>
 
