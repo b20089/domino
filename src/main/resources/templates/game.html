@@ -61,6 +61,28 @@
         console.log(a);
       }
     }
+    var q = 0;
+    var f = 0;
+    for(var i = 0; event.data[i] == '\0'; i++){
+
+      if(event.data[i] == '}'){
+        f = 0;
+      }
+
+      if(f == 1){
+        a += event.data[i];
+        q = 0;
+      }
+
+      if(event.data[i] == '"' || event.data[i] == ':'){
+        q++;
+        if(q == 9){
+          f++;
+        }
+
+      }
+
+    }
   </script>
 </head>
 
