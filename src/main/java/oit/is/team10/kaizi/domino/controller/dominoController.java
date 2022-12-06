@@ -32,7 +32,7 @@ public class dominoController {
   UsersMapper userMapper;
 
   @Autowired
-  private AsyncDomino ac56;
+  private AsyncDomino asyncDomino;
 
   @GetMapping("/domino")
   public String sample21(ModelMap model) {
@@ -53,23 +53,23 @@ public class dominoController {
     model.addAttribute("room", room);
     int count = userMapper.countUsers(user, roomid);
     model.addAttribute("count", count);
-    model.addAttribute("alertString2", id);
+    model.addAttribute("alertString2", roomid);
+    model.addAttribute("roomid", id);
     return "game.html";
   }
 
   private final Logger logger = LoggerFactory.getLogger(dominoController.class);
 
   @GetMapping("/intoRoom")
-  public SseEmitter pushCount(@RequestParam int test) {
+  public SseEmitter pushCount(@RequestParam int test, ModelMap model) {
     // infoレベルでログを出力する
     logger.info("pushCount");
 
     // finalは初期化したあとに再代入が行われない変数につける（意図しない再代入を防ぐ）
     final SseEmitter emitter = new SseEmitter(Long.MAX_VALUE);//
     // 引数にLongの最大値をTimeoutとして指定する
-
     try {
-      this.ac56.count(emitter, test);
+      this.asyncDomino.count(emitter);
     } catch (IOException e) {
       // 例外の名前とメッセージだけ表示する
       logger.warn("Exception:" + e.getClass().getName() + ":" + e.getMessage());
@@ -95,7 +95,7 @@ public class dominoController {
     model.addAttribute("count", count);
     model.addAttribute("player", player);
     model.addAttribute("alertString2", id);
-
+    model.addAttribute("roomid", id);
     return "game.html";
   }
 
