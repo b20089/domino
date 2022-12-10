@@ -13,6 +13,7 @@ import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 import oit.is.team10.kaizi.domino.model.Room;
 import oit.is.team10.kaizi.domino.model.RoomMapper;
 
+
 @Service
 public class AsyncDomino {
 
@@ -27,11 +28,12 @@ public class AsyncDomino {
   public void count(SseEmitter emitter) throws IOException {
     logger.info("AsyncDomino.count");
     Room room[] = new Room[3];
-    room[0] = roomMapper.selectById(1);
-    room[1] = roomMapper.selectById(2);
-    room[2] = roomMapper.selectById(3);
+
     try {
       while (true) {
+        room[0] = roomMapper.selectById(1);
+        room[1] = roomMapper.selectById(2);
+        room[2] = roomMapper.selectById(3);
         logger.info("send" + counter);
         // CUSTOMERとSELLERでカウンタを分ける
         // この2つ以外のロール場合は常にcounter=0

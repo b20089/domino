@@ -113,6 +113,8 @@ public class dominoController {
     model.addAttribute("count", count);
     model.addAttribute("alertString2", id);
 
+    model.addAttribute("roomid", id);
+
     return "game.html";
   }
 
