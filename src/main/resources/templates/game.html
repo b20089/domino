@@ -16,7 +16,49 @@
       sse1.onmessage = function (event) {
         console.log(event.data);
         var room = event.data[0];
-        document.getElementById("a").textContent = room;
+        var q = 0;
+        var f = 0;
+        var f2 = 0;
+        var a = '';
+        var b = '';
+        var c = '';
+        var i = 0;
+        while (i != 150) {
+          i++;
+
+          console.log(event.data[i]);
+          if (event.data[i] == '}') {
+            f = 0;
+            f2++;
+          }
+
+          if (f == 1 && f2 == 0) {
+            a += event.data[i];
+            q = 0;
+          }
+          if (f == 1 && f2 == 1) {
+            b += event.data[i];
+            q = 0;
+          }
+          if (f == 1 && f2 == 2) {
+            c += event.data[i];
+            q = 0;
+          }
+
+          if (event.data[i] == '"' || event.data[i] == ':') {
+            q++;
+            if (q == 9) {
+              f++;
+            }
+
+          }
+
+        }
+        document.getElementById("a").textContent = a;
+        document.getElementById("b").textContent = b;
+        document.getElementById("c").textContent = c;
+
+        console.log(a);
       }
     }
   </script>
