@@ -3,6 +3,7 @@
 
 <head>
   <script th:inline="javascript">
+
     var alertStr2 = /*[[${room}]]*/
       function test1() {
         alert(alertStr2.id);
@@ -12,6 +13,7 @@
         alert(alertStr3);
       }
     window.onload = function () {
+      
       var sse1 = new EventSource('/intoRoom?test=' + alertStr3);
       var ele = document.getElementById('e');
       ele.insertAdjacentHTML('beforeend', '<img src="/img/domino_daoshi.png">');
@@ -59,7 +61,6 @@
         document.getElementById("a").textContent = a;
         document.getElementById("b").textContent = b;
         document.getElementById("c").textContent = c;
-
         console.log(a);
       }
     }
