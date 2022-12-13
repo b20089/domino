@@ -13,10 +13,9 @@
         alert(alertStr3);
       }
     window.onload = function () {
-      
       var sse1 = new EventSource('/intoRoom?test=' + alertStr3);
+      var buffer = 0;
       var ele = document.getElementById('e');
-      ele.insertAdjacentHTML('beforeend', '<img src="/img/domino_daoshi.png">');
       sse1.onmessage = function (event) {
         console.log(event.data);
         var room = event.data[0];
@@ -56,12 +55,15 @@
             }
 
           }
-
         }
         document.getElementById("a").textContent = a;
         document.getElementById("b").textContent = b;
         document.getElementById("c").textContent = c;
         console.log(a);
+        for (var i = 0; i < a - buffer; i++) {
+          ele.insertAdjacentHTML('beforeend', '<img src="/img/domino_daoshi.png">');
+        }
+        buffer = a;
       }
     }
     var q = 0;
