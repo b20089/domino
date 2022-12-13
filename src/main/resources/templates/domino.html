@@ -10,6 +10,7 @@
   <h1>Authorized! <span sec:authentication="name"></span>
 
     <p>DominoGame!!</p>
+    <img src="/img/domino_daoshi.png">
     <div th:if="${user1}">
       <h2>RooM</h2>
       <a th:href="@{/room(roomid=1, id=${user1.id})}">No.1</a><br>
