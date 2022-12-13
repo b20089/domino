@@ -13,6 +13,8 @@
       }
     window.onload = function () {
       var sse1 = new EventSource('/intoRoom?test=' + alertStr3);
+      var ele = document.getElementById('e');
+      ele.insertAdjacentHTML('beforeend', '<img src="/img/domino_daoshi.png">');
       sse1.onmessage = function (event) {
         console.log(event.data);
         var room = event.data[0];
@@ -63,20 +65,20 @@
     }
     var q = 0;
     var f = 0;
-    for(var i = 0; event.data[i] == '\0'; i++){
+    for (var i = 0; event.data[i] == '\0'; i++) {
 
-      if(event.data[i] == '}'){
+      if (event.data[i] == '}') {
         f = 0;
       }
 
-      if(f == 1){
+      if (f == 1) {
         a += event.data[i];
         q = 0;
       }
 
-      if(event.data[i] == '"' || event.data[i] == ':'){
+      if (event.data[i] == '"' || event.data[i] == ':') {
         q++;
-        if(q == 9){
+        if (q == 9) {
           f++;
         }
 
@@ -107,6 +109,8 @@
       RoomNo.3のドミノ数:<a id="c"></a>
     </div>
   </div>
+
+  <div id="e"></div>
 
   <a th:href="@{/dominoSet(id=${room.id}, userid=${user.id})}">ドミノを設置</a><br>
   <a th:href="@{/dominoKnock(id=${room.id}, userid=${user.id})}">ドミノを倒す</a><br>
