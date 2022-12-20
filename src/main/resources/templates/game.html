@@ -2,6 +2,7 @@
 <html>
 
 <head>
+  <link rel="stylesheet" href="css/game.css">
   <script th:inline="javascript">
 
     var alertStr2 = /*[[${room}]]*/
@@ -16,6 +17,8 @@
       var sse1 = new EventSource('/intoRoom?test=' + alertStr3);
       var buffer = 0;
       var ele = document.getElementById('e');
+      var childEle = document.createElement('childEle');
+      ele.appendChild(childEle);
       sse1.onmessage = function (event) {
         console.log(event.data);
         var room = event.data[0];
@@ -60,10 +63,15 @@
         document.getElementById("b").textContent = b;
         document.getElementById("c").textContent = c;
         console.log(a);
-        for (var i = 0; i < a - buffer; i++) {
-          ele.insertAdjacentHTML('beforeend', '<img src="/img/domino_daoshi.png">');
+        //ele.removeChild(childEle);
+        childEle.remove();
+        childEle = document.createElement('childEle');
+        ele.appendChild(childEle);
+        for (var i = 0; i < a; i++) {
+          childEle.insertAdjacentHTML('beforeend', '<img src="/img/domino_daoshi.png">');
         }
         buffer = a;
+        console.log(buffer + "画像の数");
       }
     }
     var q = 0;
