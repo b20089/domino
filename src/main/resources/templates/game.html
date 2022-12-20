@@ -68,7 +68,7 @@
         childEle = document.createElement('childEle');
         ele.appendChild(childEle);
         for (var i = 0; i < a; i++) {
-          childEle.insertAdjacentHTML('beforeend', '<img src="/img/domino_daoshi.png">');
+          childEle.insertAdjacentHTML('beforeend', '<img src="/img/domino_daoshi2.png" alt="picture" width="42.5" height="101" class=example' + a + '>');
         }
         buffer = a;
         console.log(buffer + "画像の数");
@@ -121,10 +121,11 @@
     </div>
   </div>
 
-  <div id="e"></div>
-
   <a th:href="@{/dominoSet(id=${room.id}, userid=${user.id})}">ドミノを設置</a><br>
   <a th:href="@{/dominoKnock(id=${room.id}, userid=${user.id})}">ドミノを倒す</a><br>
+
+  <br>
+  <div id="e"></div>
 
   <br>
   <div th:if="${player}">
