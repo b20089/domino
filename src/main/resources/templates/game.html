@@ -16,13 +16,25 @@
         alert(alertStr3);
       }
     var test = function(){
-      const elem =document.getElementsByClassName('imger');
-      
-      for(var i = elem.length - 1; i >= 0; i-- ){
-        elem[i].innerHTML = '<img class="imger" src="/img/domino_daoshi2.png" alt="picture" width="70.5" height="101" class=example></img>';
+      const elem =document.getElementsByClassName('imger'); 
+      for(let i = elem.length - 1; i >= 0; i-- ){
+        if(i == elem.length - 1){
+          setTimeout(down2, (elem.length - 1) * 100,elem[elem.length-1],elem[i]);
+        }else{
+          setTimeout(down, i*100,elem[i]);
+        }
       }
       const link = /*[[@{/dominoKnock(id=${room.id}, userid=${user.id})}]]*/'';
       $('div.Fall_Down').html('<a href="' + link + '">満足した</a>');
+    }
+    var down = function(elem){
+      elem.innerHTML = '<img class="imger" src="/img/domino_倒れ.png" alt="picture" width="70.5" height="101" class=example></img>';
+    }
+    var down2 = function(elem){
+      elem.innerHTML = '<img class="imger" src="/img/domino_完全に倒れ.png" alt="picture" width="140.5" height="50" class=example></img>';
+    }
+    var textTest = function(){
+      console.log("test");
     }
     window.onload = function () {
       var sse1 = new EventSource('/intoRoom?test=' + alertStr3);
