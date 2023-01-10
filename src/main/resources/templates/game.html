@@ -16,6 +16,11 @@
         alert(alertStr3);
       }
     var test = function(){
+      const elem =document.getElementsByClassName('imger');
+      
+      for(var i = elem.length - 1; i >= 0; i-- ){
+        elem[i].innerHTML = '<img class="imger" src="/img/domino_daoshi2.png" alt="picture" width="70.5" height="101" class=example></img>';
+      }
       const link = /*[[@{/dominoKnock(id=${room.id}, userid=${user.id})}]]*/'';
       $('div.Fall_Down').html('<a href="' + link + '">満足した</a>');
     }
@@ -77,7 +82,7 @@
         childEle = document.createElement('childEle');
         ele.appendChild(childEle);
         for (var i = 0; i < a; i++) {
-          childEle.insertAdjacentHTML('beforeend', '<img class="img" src="/img/domino_daoshi2.png" alt="picture" width="42.5" height="101" class=example' + a + '>');
+          childEle.insertAdjacentHTML('beforeend', '<a class = "imger"> <img class="img"src="/img/domino_daoshi2.png" alt="picture" width="42.5" height="101" class=example' + a + '> </img></a>');
         }
         buffer = a;
         console.log(buffer + "画像の数");
