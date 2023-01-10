@@ -2,9 +2,11 @@
 <html>
 
 <head>
-  <link rel="stylesheet" href="css/game.css">
+  <script src="\jQuery\jquery-3.6.3.min.js"></script>
+  <link rel="stylesheet">
   <script th:inline="javascript">
-
+    var num = 1;
+    var num2 = 1;
     var alertStr2 = /*[[${room}]]*/
       function test1() {
         alert(alertStr2.id);
@@ -13,6 +15,10 @@
       function test2() {
         alert(alertStr3);
       }
+    var test = function(){
+      const link = /*[[@{/dominoKnock(id=${room.id}, userid=${user.id})}]]*/'';
+      $('div.Fall_Down').html('<a href="' + link + '">満足した</a>');
+    }
     window.onload = function () {
       var sse1 = new EventSource('/intoRoom?test=' + alertStr3);
       var buffer = 0;
@@ -63,12 +69,15 @@
         document.getElementById("b").textContent = b;
         document.getElementById("c").textContent = c;
         console.log(a);
+        num = a;
+        console.log(num + "to" + num2 );
+        num2 = a;
         //ele.removeChild(childEle);
         childEle.remove();
         childEle = document.createElement('childEle');
         ele.appendChild(childEle);
         for (var i = 0; i < a; i++) {
-          childEle.insertAdjacentHTML('beforeend', '<img src="/img/domino_daoshi2.png" alt="picture" width="42.5" height="101" class=example' + a + '>');
+          childEle.insertAdjacentHTML('beforeend', '<img class="img" src="/img/domino_daoshi2.png" alt="picture" width="42.5" height="101" class=example' + a + '>');
         }
         buffer = a;
         console.log(buffer + "画像の数");
@@ -100,7 +109,7 @@
 </head>
 
 <body>
-
+  
   <a th:href="@{/back(userid=${user.id})}">もどる</a><br>
 
   <div th:if="${room}">
@@ -122,8 +131,9 @@
   </div>
 
   <a th:href="@{/dominoSet(id=${room.id}, userid=${user.id})}">ドミノを設置</a><br>
-  <a th:href="@{/dominoKnock(id=${room.id}, userid=${user.id})}">ドミノを倒す</a><br>
-
+  <div class="Fall_Down">
+    <input type="button" value="ドミノを倒す" onclick="test()">
+  </div>
   <br>
   <div id="e"></div>
 
