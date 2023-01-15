@@ -1,17 +1,17 @@
-#DominoGame
-##セットアップマニュアル + ユーザーマニュアル
+# DominoGame
+## セットアップマニュアル + ユーザーマニュアル
 ---
 本プログラムはisdev22-byodで実行でき、ブラウザ上で動作します。isdev22-byodの推奨バージョンはisdev-bash-2.35.2-64であり、それ以外では動作の保証がされません。(動作が保証されているブラウザ Chome,Opera,FireFox)
 最終更新日23/01/13
 
 ---
 
-##セットアップマニュアル
+## セットアップマニュアル
 **※必ずお読みください**
 
-###Server編
+### Server編
 
-#####サーバに接続する
+##### サーバに接続する
 学内VPNに接続し、isdev22-byodを起動して以下のコマンドを実行します
 
 `
@@ -26,7 +26,7 @@ isdev22@ubuntu210:~$
 
 と表示されていれば接続成功です。
 
-#####Javaのインストール
+##### Javaのインストール
 
 次にJavaのインストールを行います。
 
@@ -60,7 +60,7 @@ OpenJDK Runtime Environment Corretto-11.0.17.8.1 (build 11.0.17+8-LTS)
 OpenJDK 64-Bit Server VM Corretto-11.0.17.8.1 (build 11.0.17+8-LTS, mixed mode)
 `
 
-#####DominoGameのダウンロード
+##### DominoGameのダウンロード
 
 次に本プログラムをダウンロードします。
 `cd ~ `を実行し、ホームディレクトリ上で以下のコマンドを実行します。
@@ -91,17 +91,17 @@ $ bash ./gradlew bootrun
 
 実行後、ブラウザで以下のURLを参照します。画面に`dominoへのGETをリクエスト(認証付き)`と表示されていれば成功です。
 
-####[http://150.89.233.210](http://150.89.233.210)
+#### [http://150.89.233.210](http://150.89.233.210)
 
-###PC編
+### PC編
 
-#####DominoGameのダウンロード
+##### DominoGameのダウンロード
 本プログラムをGitHubよりZip形式でダウンロードし、解凍します。
 `画面右上「<>Code▼」から「Download ZIP」を選択、ダウンロードした物を解凍する。`
 
 解凍されたフォルダを好きな場所に配置します。
 
-#####DominoGameの実行
+##### DominoGameの実行
 
 isdev22-byodを起動し、cdコマンドを使って解凍されたフォルダまで移動します。移動後、pwdコマンド・lsコマンドを実行して以下のように表示されることを確認してください。
 
@@ -119,7 +119,7 @@ $ ls
 build.gradle  gradle/  gradlew*  gradlew.bat  settings.gradle  src/
 `
 
-#####DominoGameの起動
+##### DominoGameの起動
 
 ゲームを起動するため、以下のコマンドを実行します。
 
@@ -129,4 +129,4 @@ $ gradle bootrun
 
 コンソールに`<==========---> 80% EXECUTING`と表示されたら起動完了です。以下のURLにアクセスして画面に`dominoへのGETをリクエスト(認証付き)`と表示されることを確認してください。
 
-####[localhost](http://localhost)
+#### [localhost](http://localhost)
