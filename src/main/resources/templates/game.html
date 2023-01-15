@@ -26,6 +26,10 @@
       }
       const link = /*[[@{/dominoKnock(id=${room.id}, userid=${user.id})}]]*/'';
       $('div.Fall_Down').html('<a href="' + link + '">満足した</a>');
+      $('a.Put_Domino').html('');
+      $('a.back').html('');
+      $('a.traitor').html('もどる');
+
     }
     var down = function(elem){
       elem.innerHTML = '<img class="imger" src="/img/domino_倒れ.png" alt="picture" width="70.5" height="101" class=example></img>';
@@ -35,6 +39,9 @@
     }
     var textTest = function(){
       console.log("test");
+    }
+    var Traitor = function(){
+      alert("このまま逃げられると思うな");
     }
     window.onload = function () {
       var sse1 = new EventSource('/intoRoom?test=' + alertStr3);
@@ -107,39 +114,19 @@
     }
     var q = 0;
     var f = 0;
-    // for (var i = 0; event.data[i] == '\0'; i++) {
-
-    //   if (event.data[i] == '}') {
-    //     f = 0;
-    //   }
-
-    //   if (f == 1) {
-    //     a += event.data[i];
-    //     q = 0;
-    //   }
-
-    //   if (event.data[i] == '"' || event.data[i] == ':') {
-    //     q++;
-    //     if (q == 9) {
-    //       f++;
-    //     }
-
-    //   }
-
-    // }
   </script>
 </head>
 
 <body>
-  
-  <a th:href="@{/back(userid=${user.id})}">もどる</a><br>
+  <a class="traitor" href="#" onclick="Traitor()"></a>
+  <a class="back" th:href="@{/back(userid=${user.id})}">もどる</a><br>
 
   <div th:if="${room}">
     <p>No.[[${room.id}]]</a></p>
   </div>
-  <input type="button" value="今いる部屋" onclick="test1();" />
+  <!-- <input type="button" value="今いる部屋" onclick="test1();" />
   <input type="button" value="受け取ったRoomID" onclick="test2();" />
-
+ -->
   <div th:if="${user}">
     あなたのID:[[${user.id}]]
     <div th:if="${count}">
@@ -152,7 +139,7 @@
     </div>
   </div>
 
-  <a th:href="@{/dominoSet(id=${room.id}, userid=${user.id})}">ドミノを設置</a><br>
+  <a class="Put_Domino" th:href="@{/dominoSet(id=${room.id}, userid=${user.id})}">ドミノを設置</a><br>
   <div class="Fall_Down">
   <input type="button" value="ドミノを倒す" onclick="test()">
   </div>

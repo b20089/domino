@@ -39,32 +39,50 @@ public class DominoAuthConfiguration {
         .password("$2y$10$ngxCDmuVK1TaGchiYQfJ1OAKkd64IH6skGsNw1sLabrTICOHPxC0e")
         .roles("USER")
         .build();
-    UserDetails admin = users
-        .username("admin")
+    UserDetails user3 = users
+        .username("user3")
         .password("$2y$10$ngxCDmuVK1TaGchiYQfJ1OAKkd64IH6skGsNw1sLabrTICOHPxC0e")
-        .roles("ADMIN")
+        .roles("USER")
         .build();
     // $ sshrun htpasswd -nbBC 10 customer1 p@ss
-    UserDetails customer1 = users
-        .username("customer1")
+    UserDetails user4 = users
+        .username("user4")
         .password("$2y$10$ngxCDmuVK1TaGchiYQfJ1OAKkd64IH6skGsNw1sLabrTICOHPxC0e")
-        .roles("CUSTOMER")
+        .roles("USER")
         .build();
     // $ sshrun htpasswd -nbBC 10 customer2 p@ss
-    UserDetails customer2 = users
-        .username("customer2")
+    UserDetails user5 = users
+        .username("user5")
         .password("$2y$10$ngxCDmuVK1TaGchiYQfJ1OAKkd64IH6skGsNw1sLabrTICOHPxC0e")
-        .roles("CUSTOMER")
+        .roles("USER")
         .build();
     // $ sshrun htpasswd -nbBC 10 seller p@ss
-    UserDetails seller = users
-        .username("seller")
+    UserDetails user6 = users
+        .username("user6")
         .password("$2y$10$ngxCDmuVK1TaGchiYQfJ1OAKkd64IH6skGsNw1sLabrTICOHPxC0e")
-        .roles("SELLER")
+        .roles("USER")
         .build();
-
-    // 生成したユーザをImMemoryUserDetailsManagerに渡す（いくつでも良い）
-    return new InMemoryUserDetailsManager(user1, user2, admin, customer1, customer2, seller);
+    UserDetails user7 = users
+        .username("user7")
+        .password("$2y$10$ngxCDmuVK1TaGchiYQfJ1OAKkd64IH6skGsNw1sLabrTICOHPxC0e")
+        .roles("USER")
+        .build();
+    UserDetails user8 = users
+        .username("user8")
+        .password("$2y$10$ngxCDmuVK1TaGchiYQfJ1OAKkd64IH6skGsNw1sLabrTICOHPxC0e")
+        .roles("USER")
+        .build(); 
+    UserDetails user9 = users
+        .username("user9")
+        .password("$2y$10$ngxCDmuVK1TaGchiYQfJ1OAKkd64IH6skGsNw1sLabrTICOHPxC0e")
+        .roles("USER")
+        .build();  
+    UserDetails user10 = users
+        .username("user10")
+        .password("$2y$10$ngxCDmuVK1TaGchiYQfJ1OAKkd64IH6skGsNw1sLabrTICOHPxC0e")
+        .roles("USER")
+        .build();      
+    return new InMemoryUserDetailsManager(user1, user2, user3,user4,user5,user6,user7,user8,user9,user10);
   }
 
   /**
