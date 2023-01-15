@@ -54,13 +54,11 @@
         var i = 0;
         while (i != 150) {
           i++;
-
           console.log(event.data[i]);
           if (event.data[i] == '}') {
             f = 0;
             f2++;
           }
-
           if (f == 1 && f2 == 0) {
             a += event.data[i];
             q = 0;
@@ -73,28 +71,35 @@
             c += event.data[i];
             q = 0;
           }
-
           if (event.data[i] == '"' || event.data[i] == ':') {
             q++;
             if (q == 9) {
               f++;
             }
-
           }
         }
         document.getElementById("a").textContent = a;
         document.getElementById("b").textContent = b;
         document.getElementById("c").textContent = c;
         console.log(a);
-        num = a;
-        console.log(num + "to" + num2 );
-        num2 = a;
         //ele.removeChild(childEle);
         childEle.remove();
         childEle = document.createElement('childEle');
         ele.appendChild(childEle);
-        for (var i = 0; i < a; i++) {
-          childEle.insertAdjacentHTML('beforeend', '<a class = "imger"> <img class="img"src="/img/domino_daoshi2.png" alt="picture" width="42.5" height="101" class=example' + a + '> </img></a>');
+        if(alertStr3 == '1'){
+          for (var i = 0; i < a; i++) {
+            childEle.insertAdjacentHTML('beforeend', '<a class = "imger"> <img class="img"src="/img/domino_daoshi2.png" alt="picture" width="42.5" height="101" class=example' + a + '> </img></a>');
+          }
+        }
+        if(alertStr3 == '2'){
+          for (var i = 0; i < b; i++) {
+            childEle.insertAdjacentHTML('beforeend', '<a class = "imger"> <img class="img"src="/img/domino_daoshi2.png" alt="picture" width="42.5" height="101" class=example' + b + '> </img></a>');
+          }
+        }
+        if(alertStr3 == '3'){
+          for (var i = 0; i < c; i++) {
+            childEle.insertAdjacentHTML('beforeend', '<a class = "imger"> <img class="img"src="/img/domino_daoshi2.png" alt="picture" width="42.5" height="101" class=example' + c + '> </img></a>');
+          }
         }
         buffer = a;
         console.log(buffer + "画像の数");
@@ -102,26 +107,26 @@
     }
     var q = 0;
     var f = 0;
-    for (var i = 0; event.data[i] == '\0'; i++) {
+    // for (var i = 0; event.data[i] == '\0'; i++) {
 
-      if (event.data[i] == '}') {
-        f = 0;
-      }
+    //   if (event.data[i] == '}') {
+    //     f = 0;
+    //   }
 
-      if (f == 1) {
-        a += event.data[i];
-        q = 0;
-      }
+    //   if (f == 1) {
+    //     a += event.data[i];
+    //     q = 0;
+    //   }
 
-      if (event.data[i] == '"' || event.data[i] == ':') {
-        q++;
-        if (q == 9) {
-          f++;
-        }
+    //   if (event.data[i] == '"' || event.data[i] == ':') {
+    //     q++;
+    //     if (q == 9) {
+    //       f++;
+    //     }
 
-      }
+    //   }
 
-    }
+    // }
   </script>
 </head>
 
@@ -132,8 +137,8 @@
   <div th:if="${room}">
     <p>No.[[${room.id}]]</a></p>
   </div>
-  <input type="button" value="Room.id," onclick="test1();" />
-  <input type="button" value="RoomNo2," onclick="test2();" />
+  <input type="button" value="今いる部屋" onclick="test1();" />
+  <input type="button" value="受け取ったRoomID" onclick="test2();" />
 
   <div th:if="${user}">
     あなたのID:[[${user.id}]]
@@ -149,7 +154,7 @@
 
   <a th:href="@{/dominoSet(id=${room.id}, userid=${user.id})}">ドミノを設置</a><br>
   <div class="Fall_Down">
-    <input type="button" value="ドミノを倒す" onclick="test()">
+  <input type="button" value="ドミノを倒す" onclick="test()">
   </div>
   <br>
   <div id="e"></div>
