@@ -54,7 +54,7 @@ public class dominoController {
     int count = userMapper.countUsers(user, roomid);
     model.addAttribute("count", count);
     model.addAttribute("alertString2", roomid);
-    model.addAttribute("roomid", id);
+    model.addAttribute("roomid", roomid);
     return "game.html";
   }
 
@@ -112,7 +112,6 @@ public class dominoController {
     model.addAttribute("user", user);
     model.addAttribute("count", count);
     model.addAttribute("alertString2", id);
-
     model.addAttribute("roomid", id);
 
     return "game.html";
