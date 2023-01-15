@@ -30,9 +30,8 @@ isdev22@ubuntu210:~$
 
 次にJavaのインストールを行います。
 
-:::note info
-コンソールに java と入力したときにコマンドの一覧が表示された場合は既にインストールされているので以下の手順は不要です。
-:::
+> **Note**
+> コンソールに java と入力したときにコマンドの一覧が表示された場合は既にインストールされているので以下の手順は不要です。
 
 次の3つのコマンドを実行します。
 
@@ -69,15 +68,15 @@ OpenJDK 64-Bit Server VM Corretto-11.0.17.8.1 (build 11.0.17+8-LTS, mixed mode)
 $ git clone https://github.com/b20089/domino.git
 `
 
-`ls`コマンドを実行し、`domino`という名前のフォルダがあることを確認してください。
+lsコマンドを実行し、dominoという名前のフォルダがあることを確認してください。
 
-確認できたら`cd`コマンドで`domino`をカレントディレクトリにします
+確認できたらcdコマンドでdominoをカレントディレクトリにします
 
 `
 $ cd domino
 `
 
-`Gradlew`を`Bash`を利用して実行します
+GradlewをBashを利用して実行します
 
 `
 $ bash ./gradlew
@@ -110,16 +109,16 @@ $ pwd
 /***/domino-main/domino-main
 `
 
-:::note info
-※***の部分は個人の環境によって変わります。
-:::
+> **Note**
+> ※***の部分は個人の環境によって変わります。
+
 
 `
 $ ls
 build.gradle  gradle/  gradlew*  gradlew.bat  settings.gradle  src/
 `
 
-##### DominoGameの起動
+### DominoGameの起動
 
 ゲームを起動するため、以下のコマンドを実行します。
 
@@ -129,4 +128,4 @@ $ gradle bootrun
 
 コンソールに`<==========---> 80% EXECUTING`と表示されたら起動完了です。以下のURLにアクセスして画面に`dominoへのGETをリクエスト(認証付き)`と表示されることを確認してください。
 
-#### [localhost](http://localhost)
+### [localhost](http://localhost)
