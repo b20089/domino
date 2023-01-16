@@ -40,7 +40,7 @@ public class AsyncDomino {
 
         // ロールごとのカウンタとロール名を送る
         emitter.send(room);
-        TimeUnit.SECONDS.sleep(5);
+        TimeUnit.SECONDS.sleep(10);
       }
     } catch (InterruptedException e) {
       e.printStackTrace();
